@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+            
+   	<!--数据库驱动 --><!-- 需自行修改 -->
+	<classPathEntry
+		location="G:\workspace\DealService\src\main\webapp\WEB-INF\lib\sqljdbc4.jar" />         
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+			<property name="suppressDate" value="true" />
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+                        
+        <!--数据库链接地址账号密码 -->
+		<jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+			connectionURL="jdbc:sqlserver://172.28.70.45:1433;DatabaseName=DevDeal"
+			userId="DevDeal" password="DevDeal2015">
+		</jdbcConnection>             
+           
+        <javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!--生成Model类存放位置 -->
+		<javaModelGenerator targetPackage="cn.com.eju.deal.user.model"
+			targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		
+		<!--生成映射文件存放位置 -->
+		<sqlMapGenerator targetPackage="cn.com.eju.deal.user.dao"
+			targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		
+		<!--生成Dao类存放位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="cn.com.eju.deal.user.dao" targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>                
+                        
+		<!--生成对应表及类名 -->
+		<!-- USR_User -->
+		<table tableName="USR_User" domainObjectName="User"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+			<property name="useActualColumnNames" value="true"/>
+		</table>
+
+
+
+    </context>
+</generatorConfiguration>
